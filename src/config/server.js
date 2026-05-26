@@ -1,7 +1,8 @@
-import express from 'express';
 import dotenv from 'dotenv';
 dotenv.config();
+import express from 'express';
 import pool from './database.js'; // import the connection
+import urlRoutes from '../routes/urlRoutes.js'
 
 
 
@@ -10,6 +11,8 @@ const PORT = process.env.PORT || 3000;
 
 // Enables Express to read JSON files
 app.use(express.json());
+
+app.use('/', urlRoutes);
 
 // Test route check online server HTTP
 app.get('/health', async (req, res) =>{

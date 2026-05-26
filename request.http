@@ -1,0 +1,12 @@
+### Testar a Rota de Saúde do Servidor (Health Check)
+GET http://localhost:3000/health
+
+###
+
+### Criar e Encurtar uma URL Nova
+POST http://localhost:3000/shorten
+Content-Type: application/json
+
+{
+  "urlOriginal": "https://google.com"
+}
