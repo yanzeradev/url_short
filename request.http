@@ -1,6 +1,9 @@
 ### Testar a Rota de Saúde do Servidor (Health Check)
 GET http://localhost:3000/health
 
+### Testar o Redirecionamento com o Hash Exato
+GET http://localhost:3000/WO2K_U
+
 ###
 
 ### Criar e Encurtar uma URL Nova
@@ -10,3 +13,5 @@ Content-Type: application/json
 {
   "urlOriginal": "https://google.com"
 }
+
+

@@ -33,8 +33,9 @@ export const shorterURL = async (req, res) => {
 export const redirectUrl = async (req, res) => {
     const{hash} = req.params;
 
+    console.log(`🔎 Buscando no banco pelo hash exato: "${hash}"`);
     try{
-        const searchQuery = 'SELECT * FROM urls WHERE hash = $1';
+        const searchQuery = 'SELECT * FROM urls WHERE LOWER(hash) = LOWER($1)';
         const result = await pool.query(searchQuery, [hash]);
 
         if (result.rows.length === 0){
@@ -46,7 +47,7 @@ export const redirectUrl = async (req, res) => {
         const attClickQuery = 'UPDATE urls SET clicks = clicks + 1 WHERE hash = $1';
         await pool.query(attClickQuery, [hash]);
 
-        return res.redirect(302, foundUrl.urlOriginal);
+        return res.redirect(302, foundUrl.url_original);
     }catch (error) {
     console.error('Erro ao redirecionar:', error.message);
     return res.status(500).json({ error: 'Erro interno ao processar redirecionamento.' });
