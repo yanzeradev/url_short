@@ -16,3 +16,5 @@ yarn-error.log*
 # Arquivos temporários de sistema operacional
 .DS_Store
 Thumbs.db
+
+dist_frontend/
