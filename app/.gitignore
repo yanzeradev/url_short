@@ -1,2 +1,13 @@
-node_modules
 .env
+
+# Dependências locais (O Docker baixa isso internamente no contêiner)
+node_modules/
+package-lock.json
+
+# Dados locais do banco de dados (se você mapeou volumes locais)
+pgdata/
+postgres_data/
+
+# Logs de execução da API
+logs/
+*.log
