@@ -22,7 +22,7 @@ export const shorterURL = async (req, res) => {
         return res.status(201).json({
             message: 'URL encurtada com sucesso!',
             data: result.rows[0],
-            urlShort: `http://localhost:3000/${hash}`
+            urlShort: `${process.env.API_URL || 'http://localhost:3000'}/${hash}`
         });
     } catch (error) {
         console.error('Erro ao encurtar URL:', error.message);

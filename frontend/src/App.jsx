@@ -10,7 +10,9 @@ export default function App(){
     //alert(`O usuário quer encurtar: ${urlOriginal}`);
 
     try {
-      const response = await axios.post('http://localhost:3000/shorten', {
+      const apiUrl = import.meta.env.API_URL;
+
+      const response = await axios.post('/shorten', {
         urlOriginal: urlOriginal
       });
 

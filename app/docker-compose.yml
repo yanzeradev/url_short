@@ -1,6 +1,25 @@
 version: '3.8'
 
 services:
+  api:
+    build: .
+    container_name: url_short_api
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: db 
+      DB_PORT: 5432
+    depends_on:
+      - db
+    networks:        
+      - rede_global
+      - default
+
   db:
     image: postgres:15-alpine
     container_name: encurtador_postgres
@@ -13,6 +32,10 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+networks:
+  rede_global:
+    external: true
 
 volumes:
   postgres_data:
