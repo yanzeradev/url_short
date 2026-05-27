@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import cors from 'cors';
 import pool from './database.js'; // import the connection
 import urlRoutes from '../routes/urlRoutes.js'
 
@@ -8,6 +9,8 @@ import urlRoutes from '../routes/urlRoutes.js'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // Enables Express to read JSON files
 app.use(express.json());
